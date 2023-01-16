@@ -1,3 +1,15 @@
 [submodule "Assets/_Game/Base/Base"]
 	path = Assets/_Game/Base/Base
 	url = https://github.com/DOGKaiser/Base-Base.git
+[submodule "Assets/_Game/Base/MenuSystem"]
+	path = Assets/_Game/Base/MenuSystem
+	url = https://github.com/DOGKaiser/Base-MenuSystem.git
+[submodule "Assets/_Game/Base/FlexUI"]
+	path = Assets/_Game/Base/FlexUI
+	url = https://github.com/DOGKaiser/Base-FlexUI.git
+[submodule "Assets/_Game/Base/MatchGame"]
+	path = Assets/_Game/Base/MatchGame
+	url = https://github.com/DOGKaiser/Base-MatchGame.git
+[submodule "Assets/_Game/Base/Skill"]
+	path = Assets/_Game/Base/Skill
+	url = https://github.com/DOGKaiser/Base-Skill.git
