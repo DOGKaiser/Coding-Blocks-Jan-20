@@ -1,0 +1,18 @@
+{
+    "name": "DataHoldersEditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f9ddf267d07314040b1aaf0b8a62dcea"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
