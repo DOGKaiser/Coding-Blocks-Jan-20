@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe85b6a6f61fc5541a35e4cd1941f7f8, type: 3}
+  m_Name: CustomMatchSetting
+  m_EditorClassIdentifier: 
+  SinglePlayer: 1
+  NumberOfPlayers: 1
+  NumberOfTeams: 1
+  NumberOfPlayersPerTeam: 1
+  NumberOfAI: 0
+  MatchClassProperty:
+    matchClass: CustomMatch
+    matchParams: []
+  Stage: {fileID: 0}
+  MatchTypes: []
