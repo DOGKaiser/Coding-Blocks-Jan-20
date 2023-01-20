@@ -442,16 +442,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
-      propertyPath: MenuScreens.Array.data[0]
-      value: 
-      objectReference: {fileID: 2272856277800936497, guid: 67b3a79f4fca71c4aa98b0559e032de5, type: 3}
-    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
-      propertyPath: MenuScreens.Array.data[1]
-      value: 
-      objectReference: {fileID: -7372006790377093057, guid: 01848029c6444f342af1338432495264, type: 3}
-    m_RemovedComponents:
-    - {fileID: 2078815122, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
 --- !u!1 &1370439353
 GameObject:
@@ -564,15 +555,14 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras:
-  - {fileID: 488654351}
-  m_RendererIndex: 0
+  m_Cameras: []
+  m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 513
+    m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -598,7 +588,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: d92f740a4e40c5748b3f13fff004126d, type: 2}
+  sharedProfile: {fileID: 0}
 --- !u!1 &1688280339
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,8 +634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c1ad3e3f66162448a7f4e46a43eb14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameCamera: {fileID: 1370439356}
-  hoverable: 
 --- !u!114 &1688280342
 MonoBehaviour:
   m_ObjectHideFlags: 0

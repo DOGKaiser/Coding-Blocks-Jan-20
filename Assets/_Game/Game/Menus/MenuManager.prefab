@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 756602679056574416}
   - component: {fileID: 756602679056574417}
   - component: {fileID: 2851445714594477273}
-  - component: {fileID: 2078815122}
   m_Layer: 5
   m_Name: MenuManager
   m_TagString: Untagged
@@ -31,6 +30,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 756602679705374185}
   m_Father: {fileID: 0}
@@ -84,6 +84,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &756602679056574417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,38 +115,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuScreens:
-  - {fileID: 2272856277800936497, guid: 20dc6478f0e56de48aaa939efe4cde2c, type: 3}
-  - {fileID: 4800879891628012223, guid: 01848029c6444f342af1338432495264, type: 3}
+  - {fileID: -3013742484419398306, guid: 67b3a79f4fca71c4aa98b0559e032de5, type: 3}
+  - {fileID: -742214345497801355, guid: c260475c33c784a45938de1917757af7, type: 3}
   - {fileID: 6725889109310011920, guid: a0c37576fb3a84874866ac853b10932c, type: 3}
-  - {fileID: 114794728018433074, guid: b13c255e31737e2448af50e125e7e4b5, type: 3}
-  - {fileID: 4800879891628012223, guid: 01848029c6444f342af1338432495264, type: 3}
+  - {fileID: -7372006790377093057, guid: 01848029c6444f342af1338432495264, type: 3}
+  - {fileID: -6126205033517340933, guid: d67d5656b467949409c83e1016e729ed, type: 3}
   - {fileID: -4822448714626984813, guid: 322e8a025680be84885bce13210b679e, type: 3}
   - {fileID: 499790784154070196, guid: 2eb3c52409176de45bad6f506672a771, type: 3}
   - {fileID: 766265531508860599, guid: 1327599f8e4fa824fb17809b15b9b39d, type: 3}
   FadeAnimator: {fileID: 756602679705374186}
-  LocalBuild: 0
---- !u!114 &2078815122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756602679056574422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b64e07880ccf62840bf99da78b2095aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Instance: {fileID: 0}
-  appleStoreID: 3805672
-  appleVideoId: video
-  appleRewardedId: rewardedVideo
-  appleBannerId: banner
-  googleStoreID: 3805673
-  googleVideoId: video
-  googleRewardedId: rewardedVideo
-  googleBannerId: banner
-  bannerPosition: 4
+  SkipLogoMenu: 0
 --- !u!1 &756602679705374190
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +156,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 756602679056574418}
   m_RootOrder: 0
@@ -209,6 +189,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -225,7 +206,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
 --- !u!95 &756602679705374181
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -238,6 +219,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1

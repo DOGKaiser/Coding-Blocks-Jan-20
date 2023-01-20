@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class GameDataMgr {
+public class GameDataMgr : BaseGameDataMgr {
 	private static readonly GameDataMgr instance = new GameDataMgr();
 	static GameDataMgr() { }
 	private GameDataMgr() { }
@@ -14,7 +14,8 @@ public class GameDataMgr {
 
 	// ------------------------------------------------------
 
-	public void Init() {
+	public override void Init() {
+		base.Init();
 		MatchSettingGameData.Instance.Init();
 
 		// Attribute Type Configs

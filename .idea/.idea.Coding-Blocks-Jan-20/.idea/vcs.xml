@@ -2,5 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/_Game/Base/Base" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/_Game/Base/FlexUI" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/_Game/Base/MatchGame" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/_Game/Base/MenuSystem" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Assets/_Game/Base/Skill" vcs="Git" />
   </component>
 </project>

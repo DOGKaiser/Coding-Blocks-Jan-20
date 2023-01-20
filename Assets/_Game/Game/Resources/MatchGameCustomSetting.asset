@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe85b6a6f61fc5541a35e4cd1941f7f8, type: 3}
-  m_Name: CustomMatchSetting
+  m_Name: MatchGameCustomSetting
   m_EditorClassIdentifier: 
   SinglePlayer: 1
   NumberOfPlayers: 1
   NumberOfTeams: 1
   NumberOfPlayersPerTeam: 1
-  NumberOfAI: 0
+  NumberOfAI: 1
   MatchClassProperty:
-    matchClass: CustomMatch
+    matchClass: MatchGameCustom
     matchParams: []
   Stage: {fileID: 0}
   MatchTypes: []
