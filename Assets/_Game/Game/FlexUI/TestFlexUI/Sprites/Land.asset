@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: e58bb61ec99c2ae4f8029889fd699712, type: 3}
   overrideSprite: 1
-  color: {r: 0.012160301, g: 0, b: 1, a: 1}
+  color: {r: 0.3018868, g: 0.15654461, b: 0.0096831415, a: 1}
   xFlip: 0
   yFlip: 0
   material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}

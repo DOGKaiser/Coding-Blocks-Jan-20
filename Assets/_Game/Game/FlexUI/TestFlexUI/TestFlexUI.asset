@@ -17,4 +17,6 @@ MonoBehaviour:
   images: []
   sprites:
   - {fileID: 11400000, guid: e12e8b8f0d08bf347bc461e380cba715, type: 2}
-  - {fileID: 11400000, guid: e12e8b8f0d08bf347bc461e380cba715, type: 2}
+  - {fileID: 11400000, guid: 98deb938b897a074eb86859dccef394e, type: 2}
+  - {fileID: 11400000, guid: 389b8aaa67692d448a99215528a99f21, type: 2}
+  - {fileID: 11400000, guid: 794e9c077ceb33640ae7c7b4d3551f23, type: 2}
