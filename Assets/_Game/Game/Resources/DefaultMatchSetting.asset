@@ -18,7 +18,7 @@ MonoBehaviour:
   NumberOfPlayersPerTeam: 1
   NumberOfAI: 0
   MatchClassProperty:
-    matchClass: JumpMatch
+    matchClass: None
     matchParams: []
   Stage: {fileID: 0}
   MatchTypes: []
