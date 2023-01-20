@@ -2213,7 +2213,7 @@ MonoBehaviour:
   AnchorMin: {x: 0, y: 0}
   AnchorMax: {x: 1, y: 1}
   MenuMusic: {fileID: 0}
-  MatchAreaPrefab: {fileID: 4650163710792904016, guid: eee698432e7207c498f15b6fc6ebca9e, type: 3}
+  MatchAreaPrefab: {fileID: 2289136107306231642, guid: b828bc7cb71cdb7458ccb67b48a3cd29, type: 3}
   MatchArea: {fileID: 0}
 --- !u!1 &7345288995015178353
 GameObject:

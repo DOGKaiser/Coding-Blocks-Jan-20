@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f096d2e06362f41a85d57557ceb55a, type: 3}
-  m_Name: FlexibleGameData
+  m_Script: {fileID: 11500000, guid: b8e26ebd1f2a5cc4aaef42ce9f8cdad8, type: 3}
+  m_Name: TestFlexUI
   m_EditorClassIdentifier: 
-  Templates:
-  - {fileID: 11400000, guid: 34d37e6e8d96c524ba56427b0e595115, type: 2}
-  - {fileID: 11400000, guid: 77c1d440c8206be43b73de599755e2fd, type: 2}
+  buttons: []
+  texts: []
+  images: []
+  sprites:
+  - {fileID: 11400000, guid: e12e8b8f0d08bf347bc461e380cba715, type: 2}
+  - {fileID: 11400000, guid: e12e8b8f0d08bf347bc461e380cba715, type: 2}
