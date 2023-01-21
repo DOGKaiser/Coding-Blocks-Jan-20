@@ -475,6 +475,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
+      propertyPath: SkipLogoMenu
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
+      propertyPath: MenuScreens.Array.data[0]
+      value: 
+      objectReference: {fileID: -3013742484419398306, guid: 67b3a79f4fca71c4aa98b0559e032de5, type: 3}
+    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
+      propertyPath: MenuScreens.Array.data[1]
+      value: 
+      objectReference: {fileID: -742214345497801355, guid: c260475c33c784a45938de1917757af7, type: 3}
+    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
+      propertyPath: MenuScreens.Array.data[2]
+      value: 
+      objectReference: {fileID: 6725889109310011920, guid: a0c37576fb3a84874866ac853b10932c, type: 3}
+    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
+      propertyPath: MenuScreens.Array.data[3]
+      value: 
+      objectReference: {fileID: -7372006790377093057, guid: 01848029c6444f342af1338432495264, type: 3}
+    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
+      propertyPath: MenuScreens.Array.data[4]
+      value: 
+      objectReference: {fileID: -6126205033517340933, guid: d67d5656b467949409c83e1016e729ed, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
 --- !u!1 &1370439353

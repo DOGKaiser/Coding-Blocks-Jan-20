@@ -21,9 +21,11 @@ public class PlayerController : MonoBehaviour {
     private Vector3 _velocity = Vector3.zero;
     private Vector3 move;
     private Vector3 mousePositionWorld;
-    private bool flipped;
+    public bool flipped;
     private bool mKeepFiring;
     public Weapon weapon;
+    public GameObject FishMouth;
+    
 
     private void Awake() {
         controller = gameObject.GetComponent<Rigidbody2D>();
@@ -123,5 +125,14 @@ public class PlayerController : MonoBehaviour {
         if (collision.CompareTag("Blocker")) {
             _velocity = Vector3.zero;
         }
+        if (collision.CompareTag("Lure")) {
+            _velocity = Vector3.zero;
+        }
+    }
+
+    Lure _lure;
+
+    public void Hooked(Lure lure) {
+        _lure = lure;
     }
 }

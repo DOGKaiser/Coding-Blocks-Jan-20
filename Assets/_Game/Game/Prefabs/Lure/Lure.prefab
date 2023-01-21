@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3622782463674407277}
   - component: {fileID: 8608302069540926118}
+  - component: {fileID: 7883482669598607549}
   m_Layer: 0
   m_Name: Lure
-  m_TagString: Untagged
+  m_TagString: Lure
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,8 +46,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2453ead62817647b0d09260cada945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7883482669598607549}
   lure: {fileID: 5033650960670643240}
-  stopLure: 0
+  hookedOffset: {x: -0.56, y: 0.03, z: 0}
+  lureVisuals: {fileID: 5737425723471181331}
+  stopLureDebug: 0
+--- !u!95 &7883482669598607549
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604254864878502431}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1939108034569205222
 GameObject:
   m_ObjectHideFlags: 0
