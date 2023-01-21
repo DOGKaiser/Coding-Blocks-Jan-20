@@ -18,9 +18,8 @@ public class PlayerController : MonoBehaviour {
     private float gravityValue = -9.81f;
     [SerializeField] private Transform playerVisuals;
 
-    Transform _fisherLocation;
+    Fisher _fisher;
     Vector3 _previousVectorFromFisher;
-    Lure _lure;
 
     private Vector2 _velocity = Vector2.zero;
     private Vector3 move;
@@ -37,7 +36,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Start() {
-        _fisherLocation = ((MatchGameCustom)MatchMenu.CurrentMatch).fisherLocation.transform;
+        _fisher = ((MatchGameCustom)MatchMenu.CurrentMatch).fisher;
     }
 
     void FixedUpdate() {
@@ -45,15 +44,15 @@ public class PlayerController : MonoBehaviour {
             playerVelocity.y = 0f;
         }
         
-        _previousVectorFromFisher = transform.position - _fisherLocation.transform.position;
+        _previousVectorFromFisher = transform.position - _fisher.transform.position;
 
             // controller.Move(move * Time.deltaTime * playerSpeed);
             
             // Move the character by finding the target velocity
             Vector2 targetVelocity = Vector2.zero; 
 
-            if (_lure != null) {
-                targetVelocity = (_lure.GetGrip() + 5) / 100f * ((Vector2)(_fisherLocation.transform.position - transform.position).normalized) * 10f;
+            if (_fisher.GetHooked()) {
+                targetVelocity = _fisher.GetPullStrength();
             }
             if (move != Vector3.zero) {
                 targetVelocity += new Vector2(move.x, move.y) * playerSpeed;
@@ -147,16 +146,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void Hooked(Lure lure) {
-        _lure = lure;
-    }
-
     public Vector2 rigidBodyVelocity;
     
-    public bool TriggerGrip() {
-        Vector3 currentDistanceFromFisher = transform.position - _fisherLocation.transform.position;
-        
-        Debug.LogWarning(transform.position + " " + _fisherLocation.transform.position + " " + currentDistanceFromFisher);
+    public bool PullingAway() {
+        Vector3 currentDistanceFromFisher = transform.position - _fisher.transform.position;
 
         return currentDistanceFromFisher.magnitude >= _previousVectorFromFisher.magnitude;
     }

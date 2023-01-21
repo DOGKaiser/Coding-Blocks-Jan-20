@@ -19,7 +19,7 @@ public class MatchMenuCustom : MatchMenu {
     protected override void CreateMatchArea() {
         base.CreateMatchArea();
 
-        ((MatchGameCustom)CurrentMatch).fisherLocation = MatchArea.transform.Find("FisherLocation");
+        ((MatchGameCustom)CurrentMatch).fisher = MatchArea.transform.Find("Fisher").GetComponent<Fisher>();
         Player = ObjectPoolMgr.Instance.GetObject(PlayerPrefab, MatchArea.transform);
         SetGrip(0);
     }
