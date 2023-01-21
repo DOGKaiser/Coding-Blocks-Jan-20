@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour {
 
     Fisher _fisher;
     Vector3 _previousVectorFromFisher;
-
+    bool _pullingAway;
+    
     private Vector2 _velocity = Vector2.zero;
     private Vector3 move;
     private Vector3 mousePositionWorld;
@@ -45,49 +46,48 @@ public class PlayerController : MonoBehaviour {
         }
         
         _previousVectorFromFisher = transform.position - _fisher.transform.position;
+        
+        // Move the character by finding the target velocity
+        Vector2 targetVelocity = Vector2.zero;
+        SetPullingAway();
 
-            // controller.Move(move * Time.deltaTime * playerSpeed);
-            
-            // Move the character by finding the target velocity
-            Vector2 targetVelocity = Vector2.zero; 
+        if (_fisher.GetHooked()) {
+            targetVelocity = _fisher.GetPullStrength();
+        }
+        if (move != Vector3.zero) {
+            targetVelocity += new Vector2(move.x, move.y) * playerSpeed;
+        }
 
-            if (_fisher.GetHooked()) {
-                targetVelocity = _fisher.GetPullStrength();
-            }
-            if (move != Vector3.zero) {
-                targetVelocity += new Vector2(move.x, move.y) * playerSpeed;
-            }
+        if (targetVelocity != Vector2.zero) {
+            // And then smoothing it out and applying it to the character
+            controller.velocity = Vector2.SmoothDamp(controller.velocity, targetVelocity, ref _velocity, _movementSmoothing);
 
-            if (targetVelocity != Vector2.zero) {
-                // And then smoothing it out and applying it to the character
-                controller.velocity = Vector2.SmoothDamp(controller.velocity, targetVelocity, ref _velocity, _movementSmoothing);
-
-                if (move.x > 0) {
-                    playerVisuals.localScale = new Vector3(-1, 1, 1);
-                    flipped = true;
-                } 
-                else if (move.x < 0) {
-                    playerVisuals.localScale = new Vector3(1, 1, 1);
-                    flipped = false;
-                }
-
-                if (move.y > 0) {
-                    transform.DORotate(new Vector3(0, 0, -10 * (flipped ? -1 : 1)), 0.5f);
-                } 
-                else if (move.y < 0) {
-                    transform.DORotate(new Vector3(0, 0, 10 * (flipped ? -1 : 1)), 0.5f);
-                } 
-                else {
-                    transform.DORotate(new Vector3(0, 0, 0), 0.5f);
-                }
+            if (move.x > 0) {
+                playerVisuals.localScale = new Vector3(-1, 1, 1);
+                flipped = true;
+            } 
+            else if (move.x < 0) {
+                playerVisuals.localScale = new Vector3(1, 1, 1);
+                flipped = false;
             }
 
-            /*
-            // Changes the height position of the player..
-            if (Input.GetButtonDown("Jump") && groundedPlayer) {
-                playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            if (move.y > 0) {
+                transform.DORotate(new Vector3(0, 0, -10 * (flipped ? -1 : 1)), 0.5f);
+            } 
+            else if (move.y < 0) {
+                transform.DORotate(new Vector3(0, 0, 10 * (flipped ? -1 : 1)), 0.5f);
+            } 
+            else {
+                transform.DORotate(new Vector3(0, 0, 0), 0.5f);
             }
-            */
+        }
+
+        /*
+        // Changes the height position of the player..
+        if (Input.GetButtonDown("Jump") && groundedPlayer) {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+        */
 
         if (mKeepFiring) {
             weapon.Fire();
@@ -147,10 +147,13 @@ public class PlayerController : MonoBehaviour {
     }
 
     public Vector2 rigidBodyVelocity;
+
+    private void SetPullingAway() {
+        _pullingAway = move.x < 0 || move.y < 0;
+    }
     
     public bool PullingAway() {
-        Vector3 currentDistanceFromFisher = transform.position - _fisher.transform.position;
-
-        return currentDistanceFromFisher.magnitude >= _previousVectorFromFisher.magnitude;
+        return _pullingAway;
+        
     }
 }
