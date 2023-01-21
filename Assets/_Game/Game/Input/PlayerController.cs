@@ -7,12 +7,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour {
+    private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     [SerializeField] private float playerSpeed = 2.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+    [SerializeField] private SpriteRenderer playerSprite;
 
     private Vector3 move;
     private Vector3 mousePositionWorld;
@@ -20,18 +23,36 @@ public class PlayerController : MonoBehaviour {
     public Weapon weapon;
 
     private void Awake() {
+        controller = gameObject.GetComponent<CharacterController>();
     }
 
-    void Update() {
+    void FixedUpdate() {
         if (groundedPlayer && playerVelocity.y < 0) {
             playerVelocity.y = 0f;
         }
 
         if (move != Vector3.zero) {
-            transform.DOMove(move * playerSpeed + transform.position, Time.deltaTime);
+            controller.Move(move * Time.deltaTime * playerSpeed);
 
-            if (move.x != 0) {
-                //gameObject.transform.forward = new Vector3(move.x, move.y, 0);
+            Vector3 rotation = Vector3.zero;
+
+            bool flipped = false;
+            if (move.x > 0) {
+                playerSprite.flipX = true;
+                flipped = true;
+            }
+            else {
+                playerSprite.flipX = false;
+            }
+
+            if (move.y > 0) {
+                transform.DORotate(new Vector3(0, 0, -10 * (flipped ? -1 : 1)), 0.5f);
+            }
+            else if (move.y < 0) {
+                transform.DORotate(new Vector3(0, 0, 10 * (flipped ? -1 : 1)), 0.5f);
+            } 
+            else {
+                transform.DORotate(new Vector3(0, 0, 0), 0.5f);
             }
         }
         
