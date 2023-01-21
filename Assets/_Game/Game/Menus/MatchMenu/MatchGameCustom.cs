@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MatchGameCustom : MatchGame  {
 	
+	
+	public Transform fisherLocation;
+	
 	public delegate void OnCharacterDied(TargetData td, Character character);
 	public event OnCharacterDied CharacterDied;
     
