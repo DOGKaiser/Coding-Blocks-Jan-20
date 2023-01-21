@@ -18,60 +18,77 @@ public class PlayerController : MonoBehaviour {
     private float gravityValue = -9.81f;
     [SerializeField] private Transform playerVisuals;
 
-    private Vector3 _velocity = Vector3.zero;
+    Transform _fisherLocation;
+    Vector3 _previousVectorFromFisher;
+    Lure _lure;
+
+    private Vector2 _velocity = Vector2.zero;
     private Vector3 move;
     private Vector3 mousePositionWorld;
     public bool flipped;
     private bool mKeepFiring;
     public Weapon weapon;
     public GameObject FishMouth;
-    
 
     private void Awake() {
         controller = gameObject.GetComponent<Rigidbody2D>();
         flipped = false;
+
+    }
+
+    void Start() {
+        _fisherLocation = ((MatchGameCustom)MatchMenu.CurrentMatch).fisherLocation.transform;
     }
 
     void FixedUpdate() {
         if (groundedPlayer && playerVelocity.y < 0) {
             playerVelocity.y = 0f;
         }
+        
+        _previousVectorFromFisher = transform.position - _fisherLocation.transform.position;
 
-        if (move != Vector3.zero) {
             // controller.Move(move * Time.deltaTime * playerSpeed);
             
             // Move the character by finding the target velocity
-            Vector2 targetVelocity = new Vector2(move.x, move.y) * playerSpeed;
-            // And then smoothing it out and applying it to the character
-            controller.velocity = Vector3.SmoothDamp(controller.velocity, targetVelocity, ref _velocity, _movementSmoothing);
+            Vector2 targetVelocity = Vector2.zero; 
 
-            if (move.x > 0) {
-                playerVisuals.localScale = new Vector3 (-1,1,1);
-                flipped = true;
+            if (_lure != null) {
+                targetVelocity = (_lure.GetGrip() + 5) / 100f * ((Vector2)(_fisherLocation.transform.position - transform.position).normalized) * 10f;
             }
-            else if (move.x < 0)
-            {
-                playerVisuals.localScale = new Vector3(1, 1, 1);
-                flipped = false;
+            if (move != Vector3.zero) {
+                targetVelocity += new Vector2(move.x, move.y) * playerSpeed;
             }
 
-            if (move.y > 0) {
-                transform.DORotate(new Vector3(0, 0, -10 * (flipped ? -1 : 1)), 0.5f);
+            if (targetVelocity != Vector2.zero) {
+                // And then smoothing it out and applying it to the character
+                controller.velocity = Vector2.SmoothDamp(controller.velocity, targetVelocity, ref _velocity, _movementSmoothing);
+
+                if (move.x > 0) {
+                    playerVisuals.localScale = new Vector3(-1, 1, 1);
+                    flipped = true;
+                } 
+                else if (move.x < 0) {
+                    playerVisuals.localScale = new Vector3(1, 1, 1);
+                    flipped = false;
+                }
+
+                if (move.y > 0) {
+                    transform.DORotate(new Vector3(0, 0, -10 * (flipped ? -1 : 1)), 0.5f);
+                } 
+                else if (move.y < 0) {
+                    transform.DORotate(new Vector3(0, 0, 10 * (flipped ? -1 : 1)), 0.5f);
+                } 
+                else {
+                    transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+                }
             }
-            else if (move.y < 0) {
-                transform.DORotate(new Vector3(0, 0, 10 * (flipped ? -1 : 1)), 0.5f);
-            } 
-            else {
-                transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+
+            /*
+            // Changes the height position of the player..
+            if (Input.GetButtonDown("Jump") && groundedPlayer) {
+                playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             }
-        }
-        
-        /*
-        // Changes the height position of the player..
-        if (Input.GetButtonDown("Jump") && groundedPlayer) {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-        */
+            */
 
         if (mKeepFiring) {
             weapon.Fire();
@@ -79,7 +96,7 @@ public class PlayerController : MonoBehaviour {
         
         // playerVelocity.y += gravityValue * Time.deltaTime;
     }
-
+    
     public void OnMove(InputAction.CallbackContext context) {
         Vector2 movement = context.ReadValue<Vector2>();
         move = new Vector3(movement.x, movement.y, 0);
@@ -130,9 +147,17 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    Lure _lure;
-
     public void Hooked(Lure lure) {
         _lure = lure;
+    }
+
+    public Vector2 rigidBodyVelocity;
+    
+    public bool TriggerGrip() {
+        Vector3 currentDistanceFromFisher = transform.position - _fisherLocation.transform.position;
+        
+        Debug.LogWarning(transform.position + " " + _fisherLocation.transform.position + " " + currentDistanceFromFisher);
+
+        return currentDistanceFromFisher.magnitude >= _previousVectorFromFisher.magnitude;
     }
 }
