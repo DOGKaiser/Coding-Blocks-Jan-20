@@ -905,34 +905,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064499d6223325d449e13e00b568a608, type: 3}
---- !u!95 &530318992007695612 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3291355855362860618, guid: 064499d6223325d449e13e00b568a608, type: 3}
-  m_PrefabInstance: {fileID: 3094303785536531126}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &858093255225741339 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2385117397639936685, guid: 064499d6223325d449e13e00b568a608, type: 3}
-  m_PrefabInstance: {fileID: 3094303785536531126}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6500128293089198467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 858093255225741339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81b5d68aed4c8db4baf7149b33b53240, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 530318992007695612}
-  gripSlackIncrease: 12
-  gripStrainDecrease: 6
-  gripNormalDecrease: 1
-  pullStrainStrength: 11
-  pullNormalStrength: 5
 --- !u!4 &8553636049617851633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6648916468924661319, guid: 064499d6223325d449e13e00b568a608, type: 3}

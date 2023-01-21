@@ -48,22 +48,27 @@ public class Fisher : MonoBehaviour {
         _hooked = hooked;
         _currentGrip = 100;
         if (_hooked) {
-            _fisherState = FisherStates.FISHER_NORMAL;
+            ChangeState(FisherStates.FISHER_NORMAL);
         }
     }
     
     void SwapState() {
         switch (_fisherState) {
             case FisherStates.FISHER_NORMAL:
-                _fisherState = FisherStates.FISHER_STRAIN;
+                ChangeState(FisherStates.FISHER_STRAIN);
                 break;
             case FisherStates.FISHER_STRAIN:
-                _fisherState = FisherStates.FISHER_SLACK;
+                ChangeState(FisherStates.FISHER_SLACK);
                 break;
             case FisherStates.FISHER_SLACK:
-                _fisherState = FisherStates.FISHER_NORMAL;
+                ChangeState(FisherStates.FISHER_NORMAL);
                 break;
         }
+    }
+
+    void ChangeState(string state) {
+        _fisherState = state;
+        _animator.SetTrigger(state);
     }
 
     void CheckGrip(bool pullingAway) {
