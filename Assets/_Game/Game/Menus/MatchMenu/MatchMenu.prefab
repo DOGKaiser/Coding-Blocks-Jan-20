@@ -1903,7 +1903,7 @@ MonoBehaviour:
   AnchorMin: {x: 0, y: 0}
   AnchorMax: {x: 1, y: 1}
   MenuMusic: {fileID: 0}
-  MatchAreaPrefab: {fileID: 2289136107306231642, guid: b828bc7cb71cdb7458ccb67b48a3cd29, type: 3}
+  MatchAreaPrefab: {fileID: 8127078404819989694, guid: 1d5e47ebe3a898043ae28d13752184fb, type: 3}
   MatchArea: {fileID: 0}
   PlayerPrefab: {fileID: 6898067657032491567, guid: 7742075ee8599a54aad6d2bf3d70d19e, type: 3}
   Player: {fileID: 0}

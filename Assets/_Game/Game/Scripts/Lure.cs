@@ -6,26 +6,27 @@ using UnityEngine;
 
 public class Lure : MonoBehaviour {
 
+    public TriggerHelper lure;
+    public bool stopLure;
+    
     public void Start() {
         MoveLeft();
+        lure.TriggerEnter += LureTriggerEnter;
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
+
+    private void LureTriggerEnter(Collider2D collision) {
         Debug.Log("Lure Hit " + collision.gameObject.name);
-    }
-    
-    private void OnTriggerStay2D(Collider2D collision) {
-        Debug.Log("Lure Happening " + collision.gameObject.name);
-    }
-    
-    private void OnTriggerExit2D(Collider2D collision) {
-        Debug.Log("Lure Exit " + collision.gameObject.name);
     }
 
     void MoveLeft() {
-        transform.DOMoveX(-15, 2).OnComplete(MoveRight);
+        if (!stopLure) {
+            transform.DOMoveX(-15, 5).OnComplete(MoveRight);
+        }
     }
     
     void MoveRight() {
-        transform.DOMoveX(15, 2).OnComplete(MoveLeft);
+        if (!stopLure) {
+            transform.DOMoveX(15, 5).OnComplete(MoveLeft);
+        }
     }
 }
