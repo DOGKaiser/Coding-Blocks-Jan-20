@@ -15,15 +15,17 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float playerSpeed = 2.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
-    [SerializeField] private SpriteRenderer playerSprite;
+    [SerializeField] private Transform playerVisuals;
 
     private Vector3 move;
     private Vector3 mousePositionWorld;
+    private bool flipped;
     private bool mKeepFiring;
     public Weapon weapon;
 
     private void Awake() {
         controller = gameObject.GetComponent<CharacterController>();
+        flipped = false;
     }
 
     void FixedUpdate() {
@@ -36,13 +38,14 @@ public class PlayerController : MonoBehaviour {
 
             Vector3 rotation = Vector3.zero;
 
-            bool flipped = false;
             if (move.x > 0) {
-                playerSprite.flipX = true;
+                playerVisuals.localScale = new Vector3 (-1,1,1);
                 flipped = true;
             }
-            else {
-                playerSprite.flipX = false;
+            else if (move.x < 0)
+            {
+                playerVisuals.localScale = new Vector3(1, 1, 1);
+                flipped = false;
             }
 
             if (move.y > 0) {
