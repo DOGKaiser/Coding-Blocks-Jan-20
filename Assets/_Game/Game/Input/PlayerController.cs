@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -7,16 +8,17 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour {
-    private CharacterController controller;
+    [SerializeField] private Rigidbody2D controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     [SerializeField] private float playerSpeed = 2.0f;
+    [Range(0, .3f)] [SerializeField] private float _movementSmoothing = .05f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     [SerializeField] private Transform playerVisuals;
 
+    private Vector3 _velocity = Vector3.zero;
     private Vector3 move;
     private Vector3 mousePositionWorld;
     private bool flipped;
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour {
     public Weapon weapon;
 
     private void Awake() {
-        controller = gameObject.GetComponent<CharacterController>();
+        controller = gameObject.GetComponent<Rigidbody2D>();
         flipped = false;
     }
 
@@ -34,9 +36,12 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (move != Vector3.zero) {
-            controller.Move(move * Time.deltaTime * playerSpeed);
-
-            Vector3 rotation = Vector3.zero;
+            // controller.Move(move * Time.deltaTime * playerSpeed);
+            
+            // Move the character by finding the target velocity
+            Vector2 targetVelocity = new Vector2(move.x, move.y) * playerSpeed;
+            // And then smoothing it out and applying it to the character
+            controller.velocity = Vector3.SmoothDamp(controller.velocity, targetVelocity, ref _velocity, _movementSmoothing);
 
             if (move.x > 0) {
                 playerVisuals.localScale = new Vector3 (-1,1,1);
@@ -109,6 +114,14 @@ public class PlayerController : MonoBehaviour {
         Vector2 mPosition = context.ReadValue<Vector2>();
         if (mPosition != Vector2.zero) {
             mousePositionWorld = new Vector3(mPosition.x, 0, mPosition.y).normalized * 1000;
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision) {
+        Debug.Log("Fish Hit " + collision.gameObject.name);
+
+        if (collision.CompareTag("Blocker")) {
+            _velocity = Vector3.zero;
         }
     }
 }
