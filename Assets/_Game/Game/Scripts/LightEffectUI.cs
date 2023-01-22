@@ -17,7 +17,6 @@ public class LightEffectUI : MonoBehaviour
     void Start()
     {
         left = !Reverse;
-        Debug.Log("STAAART!");
         spRenderer = GetComponent<Image>();
         StartCoroutine("DelayFade");
 
