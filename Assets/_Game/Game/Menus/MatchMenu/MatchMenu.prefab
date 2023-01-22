@@ -2133,12 +2133,13 @@ MonoBehaviour:
   DisableMenusUnderneath: 1
   AnchorMin: {x: 0, y: 0}
   AnchorMax: {x: 1, y: 1}
-  MenuMusic: {fileID: 0}
+  MenuMusic: {fileID: 8300000, guid: b87efe325484e904aa0105ee1406570e, type: 3}
   MatchAreaPrefab: {fileID: 8127078404819989694, guid: 1d5e47ebe3a898043ae28d13752184fb, type: 3}
   MatchArea: {fileID: 0}
   PlayerPrefab: {fileID: 6898067657032491567, guid: 7742075ee8599a54aad6d2bf3d70d19e, type: 3}
   Player: {fileID: 0}
   GripMeter: {fileID: 1661203707367192832}
+  MayhemMusic: {fileID: 8300000, guid: da25068d55f69e440942beaf448ff1c6, type: 3}
 --- !u!1 &7345288995015178353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2743,10 +2744,14 @@ PrefabInstance:
     - target: {fileID: 7479400134272394844, guid: 55c24f0b97e47b04f9032f9f8b94cb20, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -6126205033517340933}
     - target: {fileID: 7479400134272394844, guid: 55c24f0b97e47b04f9032f9f8b94cb20, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenSettings
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479400134272394844, guid: 55c24f0b97e47b04f9032f9f8b94cb20, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MatchMenuCustom, Game
       objectReference: {fileID: 0}
     - target: {fileID: 7479400134272394844, guid: 55c24f0b97e47b04f9032f9f8b94cb20, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

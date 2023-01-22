@@ -61,10 +61,9 @@ public class PlayerController : MonoBehaviour {
         SetPullingAway();
 
         if (_fisher.GetHooked()) {
-            Debug.Log("Distance " + Vector3.Distance(_fisher.transform.position,transform.position));
             if (Vector3.Distance(_fisher.transform.position,transform.position) <= loseDistance) {
                 _playerLost = true;
-                _fisher.ChangeState(Fisher.FisherStates.FISHER_HOOK_GET_FISH);
+                _fisher.GotFish();
                 animator.SetTrigger("Player_Caught");
                 return;
             }

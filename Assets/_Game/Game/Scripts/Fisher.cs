@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
-using PlasticGui.WorkspaceWindow.CodeReview.Summary;
 using UnityEngine;
 
 public class Fisher : MonoBehaviour {
@@ -56,7 +52,7 @@ public class Fisher : MonoBehaviour {
         sequence.Append(lure.transform.DOLocalMove(new Vector3(3, 1, 0), 0.3f).SetEase(Ease.Linear));
         sequence.AppendInterval(0.25f);
         sequence.AppendCallback(delegate {
-            lure.transform.SetParent(null, true); 
+            lure.transform.SetParent(MatchMenuCustom.Instance.MatchArea.transform, true); 
             Sequence sequence2 = DOTween.Sequence();
             sequence2.AppendInterval(0.25f);
             sequence2.AppendCallback(delegate { ChangeState(FisherStates.FISHER_LINE_OUT); });
@@ -98,6 +94,7 @@ public class Fisher : MonoBehaviour {
         _playerController = playerController;
         _hooked = hooked;
         _currentGrip = 100;
+        AudioManager.Instance.PlayMusic(((MatchMenuCustom)MatchMenu.Instance).MayhemMusic, 0.1f, 0.5f);
         if (_hooked) {
             ChangeState(FisherStates.FISHER_HOOK_CATCH);
         } 
@@ -160,10 +157,6 @@ public class Fisher : MonoBehaviour {
         }
 
         return pullStrength;
-        
-        _currentGrip = Mathf.Min(_currentGrip, 100);
-        _currentGrip = Mathf.Max(_currentGrip, 0);
-        ((MatchMenuCustom)MatchMenuCustom.Instance).SetGrip(_currentGrip);
     }
     
     public float GetGrip() {
@@ -173,7 +166,17 @@ public class Fisher : MonoBehaviour {
     public bool GetHooked() {
         return _hooked;
     }
-    
+
+    public void GotFish() {
+        ChangeState(Fisher.FisherStates.FISHER_HOOK_GET_FISH);
+        Sequence sequence = DOTween.Sequence();
+        sequence.AppendInterval(5);
+        sequence.AppendCallback(YouLost);
+    }
+
+    private void YouLost() {
+        LoseMenu.TransitionIn();
+    }
         
     // Fisher States
     public class FisherStates {
