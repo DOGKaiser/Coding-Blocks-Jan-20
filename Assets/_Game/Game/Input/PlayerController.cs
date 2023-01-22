@@ -177,6 +177,5 @@ public class PlayerController : MonoBehaviour {
     
     public bool PullingAway() {
         return _pullingAway;
-        
     }
 }

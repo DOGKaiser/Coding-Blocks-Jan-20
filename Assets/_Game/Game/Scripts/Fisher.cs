@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class Fisher : MonoBehaviour {
     [SerializeField] Lure lure;
     [SerializeField] Transform endOfRod;
     [SerializeField] GameObject rod;
-
+    [SerializeField] AudioSource audioSource;
     
     public float gripSlackIncrease = 12f;
     public float gripStrainDecrease = 6f;
@@ -30,6 +31,8 @@ public class Fisher : MonoBehaviour {
     bool _lostRod;
     PlayerController _playerController;
     float _currentGrip;
+    
+    public List<AudioClip> clips;
 
     // Start is called before the first frame update
     void Start() {
@@ -59,10 +62,14 @@ public class Fisher : MonoBehaviour {
             Sequence sequence2 = DOTween.Sequence();
             sequence2.AppendInterval(0.25f);
             sequence2.AppendCallback(delegate { ChangeState(FisherStates.FISHER_LINE_OUT); });
-            sequence.Append(lure.transform.DOLocalRotate(new Vector3(0f, 0f, 0f), 2.75f));
+            sequence2.Append(lure.transform.DOLocalRotate(new Vector3(0f, 0f, 0f), 2.75f));
         });
         sequence.Append(lure.transform.DOLocalMove(new Vector3(9f, 12.5f, 0), 0.75f).SetEase(Ease.Linear));
-        sequence.Append(lure.transform.DOLocalMove(new Vector3(-8f, 0f, 0), 2.5f));
+        sequence.Append(lure.transform.DOLocalMove(new Vector3(-5f, 2.1f, 0), 1.5f).SetEase(Ease.Linear));
+        sequence.AppendCallback(delegate {
+            PlaySound(clips[8]);
+            lure.transform.DOLocalMove(new Vector3(-8f, 0f, 0), 1f).SetEase(Ease.Linear);
+        });
     }
 
     // Update is called once per frame
@@ -121,13 +128,22 @@ public class Fisher : MonoBehaviour {
     void SwapState() {
         switch (_fisherState) {
             case FisherStates.FISHER_NORMAL:
+                PlaySound(clips[2]);
+                PlaySoundLoop("Reeling", clips[5]);
                 ChangeState(FisherStates.FISHER_STRAIN);
                 break;
             case FisherStates.FISHER_STRAIN:
+                PlaySound(clips[0]);
+                PlaySoundLoop("Reeling", clips[3]);
                 ChangeState(FisherStates.FISHER_SLACK);
                 break;
             case FisherStates.FISHER_SLACK:
+                PlaySound(clips[1]);
+                PlaySoundLoop("Reeling", clips[4]);
                 ChangeState(FisherStates.FISHER_NORMAL);
+                break;
+            default:
+                AudioManager.Instance.StopLoopingClip("Reeling");
                 break;
         }
     }
@@ -135,6 +151,14 @@ public class Fisher : MonoBehaviour {
     public void ChangeState(string state) {
         _fisherState = state;
         _animator.SetTrigger(state);
+    }
+    
+    public void PlaySound(AudioClip clip) {
+        AudioManager.Instance.PlayClip(clip);
+    }
+    
+    public void PlaySoundLoop(string audioId, AudioClip clip) {
+        AudioManager.Instance.PlayLoopingClip(audioId, clip, 1);
     }
 
     void CheckGrip(bool pullingAway) {
@@ -186,14 +210,18 @@ public class Fisher : MonoBehaviour {
     }
 
     public void GotFish() {
+        AudioManager.Instance.StopLoopingClip("Reeling");
         ChangeState(Fisher.FisherStates.FISHER_HOOK_GET_FISH);
+        PlaySound(clips[13]);
         Sequence sequence = DOTween.Sequence();
         sequence.AppendInterval(5);
         sequence.AppendCallback(YouLost);
     }
     
     public void LostGrip() {
+        AudioManager.Instance.StopLoopingClip("Reeling");
         SetHooked(null, false);
+        PlaySound(clips[14]);
         Sequence sequence = DOTween.Sequence();
         sequence.AppendInterval(5);
         sequence.AppendCallback(YouWon);
