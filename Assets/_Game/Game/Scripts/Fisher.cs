@@ -94,7 +94,7 @@ public class Fisher : MonoBehaviour {
             _timer += Time.deltaTime;
             if (_timer >= 5) {
                 SwapState();
-                _timer = 0;
+                _timer = Random.Range(-1.5f, 2);
             }
         }
 
@@ -126,21 +126,37 @@ public class Fisher : MonoBehaviour {
     }
     
     void SwapState() {
+        int coolStory = Random.Range(0, 2);
         switch (_fisherState) {
             case FisherStates.FISHER_NORMAL:
                 PlaySound(clips[2]);
                 PlaySoundLoop("Reeling", clips[5]);
-                ChangeState(FisherStates.FISHER_STRAIN);
+                if (coolStory == 0) {
+                    ChangeState(FisherStates.FISHER_STRAIN);
+                } 
+                else {
+                    ChangeState(FisherStates.FISHER_SLACK);
+                }
                 break;
             case FisherStates.FISHER_STRAIN:
                 PlaySound(clips[0]);
                 PlaySoundLoop("Reeling", clips[3]);
-                ChangeState(FisherStates.FISHER_SLACK);
+                if (coolStory == 0) {
+                    ChangeState(FisherStates.FISHER_NORMAL);
+                } 
+                else {
+                    ChangeState(FisherStates.FISHER_SLACK);
+                }
                 break;
             case FisherStates.FISHER_SLACK:
                 PlaySound(clips[1]);
                 PlaySoundLoop("Reeling", clips[4]);
-                ChangeState(FisherStates.FISHER_NORMAL);
+                if (coolStory == 0) {
+                    ChangeState(FisherStates.FISHER_STRAIN);
+                } 
+                else {
+                    ChangeState(FisherStates.FISHER_NORMAL);
+                }
                 break;
             default:
                 AudioManager.Instance.StopLoopingClip("Reeling");
