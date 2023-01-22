@@ -452,7 +452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.7922058, y: 4.7794}
+  m_AnchoredPosition: {x: -1.7921753, y: 4.7794}
   m_SizeDelta: {x: 28.3639, y: 4.7794}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1577054050529185066
@@ -834,8 +834,8 @@ MonoBehaviour:
   AnchorMin: {x: 0.05, y: 0.05}
   AnchorMax: {x: 0.95, y: 0.95}
   MenuMusic: {fileID: 0}
-  MusicImage: {fileID: 4115997250117742077}
-  SoundImage: {fileID: 555781322036970775}
+  MusicText: {fileID: 0}
+  SoundText: {fileID: 0}
   MusicVolume: {fileID: 3422376099710056758}
   SoundVolume: {fileID: 4473576676026011499}
 --- !u!1 &3010968965812607157
@@ -1615,10 +1615,10 @@ RectTransform:
   m_Father: {fileID: 7377206166507096794}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.5963, y: 160.32}
-  m_SizeDelta: {x: 639.82, y: 195.4299}
+  m_AnchorMin: {x: 0.5, y: 0.9}
+  m_AnchorMax: {x: 0.5, y: 0.9}
+  m_AnchoredPosition: {x: 2.5963, y: -48.5}
+  m_SizeDelta: {x: 639.82, y: 196.4299}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7392369099489732728
 CanvasRenderer:

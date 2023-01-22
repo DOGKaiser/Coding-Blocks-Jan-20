@@ -17,7 +17,7 @@ public class LogoBob : MonoBehaviour
     void Start()
     {
         Debug.Log("START");
-        origin = transform.position;
+        origin = transform.localPosition;
         startScale = transform.localScale;
         originR = transform.rotation.eulerAngles;
         StartCoroutine("Bob");
@@ -30,9 +30,9 @@ public class LogoBob : MonoBehaviour
         up = !up;
         Debug.Log("BOBBING");
         if(up)
-            transform.DOMove((origin + (Vector3.up * 10f)), bobSpeed).SetEase(Ease.InOutCubic).OnComplete(() => StartCoroutine("Bob")).Play();
+            transform.DOLocalMove((new Vector3(transform.localPosition.x,origin.y, transform.localPosition.z) + (Vector3.up * 10f)), bobSpeed).SetEase(Ease.InOutCubic).OnComplete(() => StartCoroutine("Bob")).Play();
         else
-            transform.DOMove((origin + (Vector3.down * 10f)), bobSpeed).SetEase(Ease.InOutCubic).OnComplete(() => StartCoroutine("Bob")).Play();
+            transform.DOLocalMove((new Vector3(transform.localPosition.x, origin.y, transform.localPosition.z) + (Vector3.down * 10f)), bobSpeed).SetEase(Ease.InOutCubic).OnComplete(() => StartCoroutine("Bob")).Play();
 
         yield return null;
     }

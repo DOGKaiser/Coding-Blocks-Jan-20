@@ -23,4 +23,20 @@ public class MainMenuCustom : MainMenu {
 		HowToMenu.Show();
 	}
 
-}
+	public Button Start, HowTo, Settings;
+
+	public void DisableButtons()
+	{
+		//stop the player from clicking while loading
+		Start.enabled = false;
+		HowTo.enabled = false;
+		Settings.enabled = false;
+	}
+
+	public void EnterMatchMakingCustom(MatchSetting matchSetting)
+	{
+		EnterMatchMaking(matchSetting);
+		DisableButtons();
+	}
+
+	}

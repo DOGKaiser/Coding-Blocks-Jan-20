@@ -107,6 +107,8 @@ public class Fisher : MonoBehaviour {
         if (_hooked) {
             _currentGrip = startGrip;
             ChangeState(FisherStates.FISHER_HOOK_CATCH);
+            PlaySound(clips[11]);
+            PlaySoundLoop("Reeling", clips[5]);
             AudioManager.Instance.PlayMusic(((MatchMenuCustom)MatchMenu.Instance).MayhemMusic, 0.1f, 0.5f);
         } 
         else {

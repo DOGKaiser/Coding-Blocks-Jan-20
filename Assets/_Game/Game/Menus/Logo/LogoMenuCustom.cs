@@ -9,7 +9,9 @@ public class LogoMenuCustom : LogoMenu {
 	}
 
 	protected virtual void Next() {
-		if(skipLogin) {
+		float volume = PlayerPrefs.GetFloat("MusicVolume", .4f);
+		AudioManager.Instance.SetMusicVolume(volume);
+		if (skipLogin) {
 			MainMenu.TransitionIn();
 		}
 		else {
