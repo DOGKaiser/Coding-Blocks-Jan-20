@@ -281,11 +281,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 3291355855362860618}
+  lure: {fileID: 0}
+  endOfRod: {fileID: 0}
+  rod: {fileID: 3842567322772576134}
   gripSlackIncrease: 12
   gripStrainDecrease: 6
   gripNormalDecrease: 1
   pullStrainStrength: 11
   pullNormalStrength: 5
+  startGrip: 5
+  debugReset: 0
+  debugTest: 0
+  debugVector: {x: 0, y: 0, z: 0}
+  debugTime: 0.5
+  debugEase: 2
 --- !u!1 &2393565000282738567
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +473,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8075363582472992486}
   - component: {fileID: 6996029111360203167}
+  - component: {fileID: 2784369956076431803}
+  - component: {fileID: 6147571852404500167}
   m_Layer: 0
   m_Name: Rod
   m_TagString: Untagged
@@ -500,6 +511,56 @@ SortingGroup:
   m_SortingLayerID: -196408721
   m_SortingLayer: 2
   m_SortingOrder: 4
+--- !u!95 &2784369956076431803
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3842567322772576134}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f5a0e8af60c0a543bf75031a61a4181, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &6147571852404500167
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3842567322772576134}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -2.53, y: 2.36}
+      - {x: -0.41, y: 0.30901697}
+      - {x: 0.04, y: -0.32}
+      - {x: 0.43, y: -0.06}
+      - {x: -0.05, y: 0.30901712}
 --- !u!1 &4482978264571046283
 GameObject:
   m_ObjectHideFlags: 0

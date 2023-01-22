@@ -9,6 +9,7 @@ public class Fisher : MonoBehaviour {
     [SerializeField] Animator _animator;
     [SerializeField] Lure lure;
     [SerializeField] Transform endOfRod;
+    [SerializeField] GameObject rod;
 
     
     public float gripSlackIncrease = 12f;
@@ -17,7 +18,8 @@ public class Fisher : MonoBehaviour {
     
     public float pullStrainStrength = 10f;
     public float pullNormalStrength = 4f;
-
+    public float startGrip = 100;
+    
     public bool debugReset = false;
     public bool debugTest = false;
     public Vector3 debugVector = Vector3.zero;
@@ -25,6 +27,7 @@ public class Fisher : MonoBehaviour {
     public Ease debugEase = Ease.InSine;
 
     bool _hooked;
+    bool _lostRod;
     PlayerController _playerController;
     float _currentGrip;
 
@@ -82,7 +85,7 @@ public class Fisher : MonoBehaviour {
             CheckGrip(_playerController.PullingAway());
             
             _timer += Time.deltaTime;
-            if (_timer >= 10) {
+            if (_timer >= 5) {
                 SwapState();
                 _timer = 0;
             }
@@ -93,15 +96,26 @@ public class Fisher : MonoBehaviour {
     public void SetHooked(PlayerController playerController, bool hooked) {
         _playerController = playerController;
         _hooked = hooked;
-        _currentGrip = 100;
-        AudioManager.Instance.PlayMusic(((MatchMenuCustom)MatchMenu.Instance).MayhemMusic, 0.1f, 0.5f);
+        lure.transform.DOKill();
         if (_hooked) {
+            _currentGrip = startGrip;
             ChangeState(FisherStates.FISHER_HOOK_CATCH);
+            AudioManager.Instance.PlayMusic(((MatchMenuCustom)MatchMenu.Instance).MayhemMusic, 0.1f, 0.5f);
         } 
         else {
             // TODO: Reset
-            ChangeState(FisherStates.FISHER_NORMAL);
+            ChangeState(FisherStates.FISHER_HOOK_LOSE_ROD);
+            AudioManager.Instance.PlayMusic(((MatchMenuCustom)MatchMenu.Instance).MenuMusic, 0.1f, 0.5f);
         }
+    }
+
+    public void RodInWater() {
+        GameObject newRod = ObjectPoolMgr.Instance.GetObject(rod, rod.transform.position, rod.transform.rotation, MatchMenu.Instance.MatchArea.transform);
+        newRod.tag = "Blocker";
+        Animator animator = newRod.GetComponent<Animator>();
+        animator.enabled = true;
+        animator.SetTrigger("Sink");
+        newRod.GetComponent<PolygonCollider2D>().enabled = true;
     }
     
     void SwapState() {
@@ -143,6 +157,10 @@ public class Fisher : MonoBehaviour {
         _currentGrip = Mathf.Min(_currentGrip, 100);
         _currentGrip = Mathf.Max(_currentGrip, 0);
         ((MatchMenuCustom)MatchMenuCustom.Instance).SetGrip(_currentGrip);
+
+        if (_currentGrip == 0) {
+            LostGrip();
+        }
     }
     
     public Vector2 GetPullStrength() {
@@ -173,9 +191,20 @@ public class Fisher : MonoBehaviour {
         sequence.AppendInterval(5);
         sequence.AppendCallback(YouLost);
     }
+    
+    public void LostGrip() {
+        SetHooked(null, false);
+        Sequence sequence = DOTween.Sequence();
+        sequence.AppendInterval(5);
+        sequence.AppendCallback(YouWon);
+    }
 
     private void YouLost() {
         LoseMenu.TransitionIn();
+    }
+    
+    private void YouWon() {
+        WinMenu.TransitionIn();
     }
         
     // Fisher States
