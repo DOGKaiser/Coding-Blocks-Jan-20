@@ -17,5 +17,10 @@ public class MainMenuCustom : MainMenu {
 		LoseMenu.Close();
 		MatchMenuCustom.Close();
 	}
-    
+
+	public void OpenHowTo()
+	{
+		HowToMenu.Show();
+	}
+
 }
