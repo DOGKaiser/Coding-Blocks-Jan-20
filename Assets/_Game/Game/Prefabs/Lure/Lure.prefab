@@ -50,9 +50,7 @@ MonoBehaviour:
   lure: {fileID: 5033650960670643240}
   hookedOffset: {x: -0.56, y: 0.03, z: 0}
   lureVisuals: {fileID: 5737425723471181331}
-  stopLureDebug: 0
-  gripDifficulty: 5
-  gripLoosen: 8
+  stopLureDebug: 1
 --- !u!95 &7883482669598607549
 Animator:
   serializedVersion: 4

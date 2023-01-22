@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68544ccb1489fb64cac1ed67c61113c5, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: e58bb61ec99c2ae4f8029889fd699712, type: 3}
+  sprite: {fileID: 21300000, guid: 8e936bb5dc94c1049960ef1b5dac0c83, type: 3}
   overrideSprite: 1
   color: {r: 0.012160301, g: 0, b: 1, a: 1}
   xFlip: 0

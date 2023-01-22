@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     [SerializeField] private Transform playerVisuals;
+    [SerializeField] private Animator animator;
 
     Fisher _fisher;
     Vector3 _previousVectorFromFisher;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         _fisher = ((MatchGameCustom)MatchMenu.CurrentMatch).fisher;
+        animator = playerVisuals.GetComponent<Animator>();
     }
 
     void FixedUpdate() {
@@ -56,6 +58,11 @@ public class PlayerController : MonoBehaviour {
         }
         if (move != Vector3.zero) {
             targetVelocity += new Vector2(move.x, move.y) * playerSpeed;
+            animator.SetFloat("AnimationSpeed", 1);
+        } 
+        else {
+            
+            animator.SetFloat("AnimationSpeed", 0);
         }
 
         if (targetVelocity != Vector2.zero) {
