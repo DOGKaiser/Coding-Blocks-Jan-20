@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour {
     public Weapon weapon;
     public GameObject FishMouth;
 
+    public float loseDistance;
+    bool _playerLost = false;
+
     private void Awake() {
         controller = gameObject.GetComponent<Rigidbody2D>();
         flipped = false;
@@ -43,6 +46,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        if (_playerLost) {
+            return;
+        }
+        
         if (groundedPlayer && playerVelocity.y < 0) {
             playerVelocity.y = 0f;
         }
@@ -54,6 +61,14 @@ public class PlayerController : MonoBehaviour {
         SetPullingAway();
 
         if (_fisher.GetHooked()) {
+            Debug.Log("Distance " + Vector3.Distance(_fisher.transform.position,transform.position));
+            if (Vector3.Distance(_fisher.transform.position,transform.position) <= loseDistance) {
+                _playerLost = true;
+                _fisher.ChangeState(Fisher.FisherStates.FISHER_HOOK_GET_FISH);
+                animator.SetTrigger("Player_Caught");
+                return;
+            }
+            
             targetVelocity = _fisher.GetPullStrength();
         }
         if (move != Vector3.zero) {

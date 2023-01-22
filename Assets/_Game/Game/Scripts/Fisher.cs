@@ -13,7 +13,6 @@ public class Fisher : MonoBehaviour {
     [SerializeField] Animator _animator;
     [SerializeField] Lure lure;
     [SerializeField] Transform endOfRod;
-    [SerializeField] AnimationCurve lureThrow;
 
     
     public float gripSlackIncrease = 12f;
@@ -46,7 +45,7 @@ public class Fisher : MonoBehaviour {
     float _timer;
 
     void DebugCall() {
-        lure.transform.DOLocalMove(debugVector, debugTime).SetEase(lureThrow);
+        lure.transform.DOLocalMove(debugVector, debugTime).SetEase(debugEase);
     }
     
     void CastLine() {
@@ -64,7 +63,7 @@ public class Fisher : MonoBehaviour {
             sequence.Append(lure.transform.DOLocalRotate(new Vector3(0f, 0f, 0f), 2.75f));
         });
         sequence.Append(lure.transform.DOLocalMove(new Vector3(9f, 12.5f, 0), 0.75f).SetEase(Ease.Linear));
-        sequence.Append(lure.transform.DOLocalMove(new Vector3(-8f, 6f, 0), 2.5f));
+        sequence.Append(lure.transform.DOLocalMove(new Vector3(-8f, 0f, 0), 2.5f));
     }
 
     // Update is called once per frame

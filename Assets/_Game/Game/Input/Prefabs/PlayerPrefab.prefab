@@ -266,9 +266,12 @@ MonoBehaviour:
   playerSpeed: 8
   _movementSmoothing: 0.05
   playerVisuals: {fileID: 139819226417869538}
+  animator: {fileID: 0}
   flipped: 0
   weapon: {fileID: 580208483880724658}
   FishMouth: {fileID: 8515199257497160161}
+  loseDistance: 3.5
+  rigidBodyVelocity: {x: 0, y: 0}
 --- !u!1 &6052464291996114779
 GameObject:
   m_ObjectHideFlags: 0
