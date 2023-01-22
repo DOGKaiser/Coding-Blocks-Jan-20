@@ -392,7 +392,7 @@ MonoBehaviour:
   DisableMenusUnderneath: 1
   AnchorMin: {x: 0, y: 0}
   AnchorMax: {x: 1, y: 1}
-  MenuMusic: {fileID: 0}
+  MenuMusic: {fileID: 8300000, guid: b87efe325484e904aa0105ee1406570e, type: 3}
 --- !u!1 &4237953195254528171
 GameObject:
   m_ObjectHideFlags: 0

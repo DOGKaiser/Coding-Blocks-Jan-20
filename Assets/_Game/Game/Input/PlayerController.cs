@@ -61,10 +61,9 @@ public class PlayerController : MonoBehaviour {
         SetPullingAway();
 
         if (_fisher.GetHooked()) {
-            Debug.Log("Distance " + Vector3.Distance(_fisher.transform.position,transform.position));
             if (Vector3.Distance(_fisher.transform.position,transform.position) <= loseDistance) {
                 _playerLost = true;
-                _fisher.ChangeState(Fisher.FisherStates.FISHER_HOOK_GET_FISH);
+                _fisher.GotFish();
                 animator.SetTrigger("Player_Caught");
                 return;
             }
@@ -73,7 +72,9 @@ public class PlayerController : MonoBehaviour {
         }
         if (move != Vector3.zero) {
             targetVelocity += new Vector2(move.x, move.y) * playerSpeed;
-            animator.SetFloat("AnimationSpeed", 1);
+            float anispeed = (targetVelocity.magnitude / 4);
+            if (_pullingAway) anispeed +=(_fisher.GetPullStrength().magnitude/4);
+            animator.SetFloat("AnimationSpeed", anispeed);
         } 
         else {
             

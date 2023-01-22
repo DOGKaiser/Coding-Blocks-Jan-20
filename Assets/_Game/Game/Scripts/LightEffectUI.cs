@@ -29,11 +29,13 @@ public class LightEffectUI : MonoBehaviour
     IEnumerator Shimmy()
     {
         left = !left;
-        if (left)
-            transform.DOMove((origin+(Vector3.left * .2f)), movespeed).SetEase(Ease.InOutCubic).OnComplete(() => StartCoroutine("Shimmy")).Play();
-        else
-            transform.DOMove((origin + (Vector3.right * .2f)), movespeed).SetEase(Ease.InOutCubic).OnComplete(() => StartCoroutine("Shimmy")).Play();
-
+        if (spRenderer.IsActive())
+        {
+            if (left)
+                transform.DOMove((origin + (Vector3.left * .2f)), movespeed).SetEase(Ease.InOutCubic).OnComplete(() => StartCoroutine("Shimmy")).Play();
+            else
+                transform.DOMove((origin + (Vector3.right * .2f)), movespeed).SetEase(Ease.InOutCubic).OnComplete(() => StartCoroutine("Shimmy")).Play();
+        }
         yield return null;
     }
 

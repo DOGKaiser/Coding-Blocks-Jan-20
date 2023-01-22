@@ -7,6 +7,15 @@ using UnityEngine.UI.Extensions;
 
 public class MainMenuCustom : MainMenu {
 
-
+    
+	public static void TransitionInFromMatch() {
+		Destroy(MatchMenuCustom.Instance.MatchArea);
+		MatchMenuCustom.CurrentMatch = null;
+		
+		MenuManager.Instance.FadeIn();
+		Open();
+		LoseMenu.Close();
+		MatchMenuCustom.Close();
+	}
     
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427182, b: 0.56452405, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -480,6 +480,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
+      propertyPath: MenuScreens.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
       propertyPath: MenuScreens.Array.data[0]
       value: 
       objectReference: {fileID: -3013742484419398306, guid: 67b3a79f4fca71c4aa98b0559e032de5, type: 3}
@@ -499,6 +503,14 @@ PrefabInstance:
       propertyPath: MenuScreens.Array.data[4]
       value: 
       objectReference: {fileID: -6126205033517340933, guid: d67d5656b467949409c83e1016e729ed, type: 3}
+    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
+      propertyPath: MenuScreens.Array.data[5]
+      value: 
+      objectReference: {fileID: -3249688213212182516, guid: acd2b50803a51e24e8f1e7d898955648, type: 3}
+    - target: {fileID: 2851445714594477273, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
+      propertyPath: MenuScreens.Array.data[6]
+      value: 
+      objectReference: {fileID: 766265531508860599, guid: 1327599f8e4fa824fb17809b15b9b39d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fed35ac164e42f40b400317addd5115, type: 3}
 --- !u!1 &1370439353
