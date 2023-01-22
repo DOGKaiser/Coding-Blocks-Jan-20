@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e26ebd1f2a5cc4aaef42ce9f8cdad8, type: 3}
   m_Name: TestFlexUI
   m_EditorClassIdentifier: 
-  buttons: []
-  texts: []
+  buttons:
+  - {fileID: 11400000, guid: 234fdb20362129c4689bd0d91aec9459, type: 2}
+  texts:
+  - {fileID: 11400000, guid: 0e08e081945228b42aa4d8aba698c1c1, type: 2}
   images: []
   sprites:
   - {fileID: 11400000, guid: e12e8b8f0d08bf347bc461e380cba715, type: 2}
   - {fileID: 11400000, guid: 98deb938b897a074eb86859dccef394e, type: 2}
   - {fileID: 11400000, guid: 389b8aaa67692d448a99215528a99f21, type: 2}
+  - {fileID: 11400000, guid: 794e9c077ceb33640ae7c7b4d3551f23, type: 2}
+  - {fileID: 11400000, guid: 794e9c077ceb33640ae7c7b4d3551f23, type: 2}
+  - {fileID: 11400000, guid: 794e9c077ceb33640ae7c7b4d3551f23, type: 2}
+  - {fileID: 11400000, guid: 794e9c077ceb33640ae7c7b4d3551f23, type: 2}
   - {fileID: 11400000, guid: 794e9c077ceb33640ae7c7b4d3551f23, type: 2}

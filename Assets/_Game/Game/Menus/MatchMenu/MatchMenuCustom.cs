@@ -29,4 +29,10 @@ public class MatchMenuCustom : MatchMenu {
         Debug.Log(grip+" "+ ((int)grip));
         GripMeter.rectTransform.localScale = new Vector3(1,(grip/100),1);
     }
+
+    public void OpenSettings()
+    {
+        SettingMenu.Show();
+    }
+
 }

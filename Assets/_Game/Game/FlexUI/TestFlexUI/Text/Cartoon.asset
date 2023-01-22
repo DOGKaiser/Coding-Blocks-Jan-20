@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212ed409564f3c24aa600e552b4cc3ab, type: 3}
+  m_Name: Cartoon
+  m_EditorClassIdentifier: 
+  font: {fileID: 11400000, guid: ed8a88738b48cfb448b0657ac8c458fa, type: 2}
+  material: {fileID: 65109100570470605, guid: ed8a88738b48cfb448b0657ac8c458fa, type: 2}
+  overrideFontStyle: 0
+  fontStyle: 0
+  overrideColor: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
+  colorGradient: 0
+  vertexGradient:
+    topLeft: {r: 0, g: 0, b: 0, a: 0}
+    topRight: {r: 0, g: 0, b: 0, a: 0}
+    bottomLeft: {r: 0, g: 0, b: 0, a: 0}
+    bottomRight: {r: 0, g: 0, b: 0, a: 0}
+  presetColorGradient: {fileID: 0}
+  overrideTags: 0
+  overrideAlignment: 0
+  fontSize: 36
+  autoSize: 0
+  autoSizeMin: 18
+  autoSizeMax: 72
+  autoSizeWD: 0
+  autoSizeLine: 0
+  spacingChar: 0
+  spacingWord: 0
+  spacingLine: 0
+  spacingPar: 0
+  alignment: 257
+  textWrap: 1
+  textOverflow: 0
+  uvMappingOptionX: 0
+  uvMappingOptionY: 0
+  spriteAsset: {fileID: 0}
